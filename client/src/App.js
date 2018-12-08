@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Trip from './components/Trip';
 import TripList from './components/TripList';
-import { Container, Header, Icon } from "semantic-ui-react";
+import TripForm from './components/TripForm';
+import { Container, Header, Icon, } from "semantic-ui-react";
 
 
 class App extends Component {
@@ -12,7 +14,9 @@ class App extends Component {
       .then( res => {
           this.setState({ trips: res.data });
       });
-  };//end of componentDidMount
+  };
+  
+  //end of componentDidMount
 
   // addLocation = (name) => {
 
@@ -37,6 +41,7 @@ class App extends Component {
         triptracker™
         </Header>
         <hr/>
+        <Trip />
       </Container>
     );
   }
