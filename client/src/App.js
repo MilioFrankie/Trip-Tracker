@@ -25,11 +25,26 @@ class App extends Component {
 
   // };//end of addLocation
 
-  // updateLocation = (id) => {
+  updateTrip = (id) => {
+    axios.put(`/api/trips/${id}`)
+      .then( res => {
+        const trips = this.state.trips.map( t => {
+          if (t.id === id)
+            return res.data;
+          return t;
+        })
+        this.setState({ trips, });
+      })
+  }
 
   // };//end of updateLocation
 
-  // deleteLocation = (id) => {
+  deleteTrip = (id) => {
+    axios.delete(`/api/trips/${id}`).then( res => {
+        const { trips, } = this.state;
+        this.setState({ trips: trips.filter( t => t.id !== id) })
+      })
+  }
 
   // };//end of deleteLocation
 
@@ -62,7 +77,11 @@ class App extends Component {
         </Button>
         {showForm ? <TripForm add={this.addTrip} /> : null}
         <hr />
-        <TripList trips={this.state.trips} />
+        <TripList 
+          trips={this.state.trips} 
+          remove={this.deleteTrip}
+          update={this.updateTrip}
+          />
       </Container>
     );
   }

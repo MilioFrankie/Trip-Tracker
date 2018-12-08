@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Header, Segment, Icon, Button } from "semantic-ui-react";
 
 class Trip extends React.Component {
-  render() {
+  render({}) {
     return (
       <Container style={{ marginTop: "10px" }}>
         <Segment secondary>
