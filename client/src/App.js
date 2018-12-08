@@ -3,11 +3,11 @@ import axios from "axios";
 import Trip from './components/Trip';
 import TripList from './components/TripList';
 import TripForm from './components/TripForm';
-import { Container, Header, Icon, } from "semantic-ui-react";
+import { Container, Header, Icon, Button} from "semantic-ui-react";
 
 
 class App extends Component {
-  state = { trips: [] };
+  state = { trips: [], showForm: false, };
 
   componentDidMount() {
     axios.get("/api/trips")
@@ -29,8 +29,14 @@ class App extends Component {
   // deleteLocation = (id) => {
 
   // };//end of deleteLocation
+  
+  toggleForm = () => this.setState({ 
+    showForm: !this.state.showForm, 
+  });
 
   render() {
+    const { showForm, } = this.state;
+
     return (
       <Container >
         <Header 
@@ -41,6 +47,11 @@ class App extends Component {
         triptracker™
         </Header>
         <hr/>
+        <Button circular onClick = {this.toggleForm}>
+          <Icon name = { showForm ? "chevron down" : "chevron up" }/>
+          add trip
+        </Button>
+        { showForm ? <TripForm /> : null }
         <Trip />
       </Container>
     );
