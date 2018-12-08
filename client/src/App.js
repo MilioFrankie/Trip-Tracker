@@ -1,20 +1,19 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Trip from './components/Trip';
-import TripList from './components/TripList';
-import TripForm from './components/TripForm';
-import { Container, Header, Icon, Button} from "semantic-ui-react";
+import Trip from "./components/Trip";
+import TripList from "./components/TripList";
+import TripForm from "./components/TripForm";
+import { Container, Header, Icon, Button } from "semantic-ui-react";
 
 class App extends Component {
-  state = { trips: [], showForm: false, };
+  state = { trips: [], showForm: false };
 
   componentDidMount() {
-    axios.get("/api/trips")
-      .then( res => {
-          this.setState({ trips: res.data });
-      });
-  };
-  
+    axios.get("/api/trips").then(res => {
+      this.setState({ trips: res.data });
+    });
+  }
+
   //end of componentDidMount
 
   addLocation = (name) => {
@@ -40,7 +39,7 @@ class App extends Component {
   });
 
   render() {
-    const { showForm, } = this.state;
+    const { showForm } = this.state;
 
     return (
       <Container >
@@ -52,13 +51,14 @@ class App extends Component {
         <Icon name = "map"/>
           triptracker®
         </Header>
-        <hr/>
-        <Button circular onClick = {this.toggleForm}>
-          <Icon name = { showForm ? "chevron down" : "chevron up" }/>
+        <hr />
+        <Button circular onClick={this.toggleForm}>
+          <Icon name={showForm ? "chevron down" : "chevron up"} />
           add trip
         </Button>
         { showForm ? <TripForm add = {this.addTrip}/> : null }
         <Trip />
+        {showForm ? <TripForm /> : null}
         <hr />
         <TripList trips={this.state.trips} />
       </Container>
