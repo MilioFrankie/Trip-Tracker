@@ -17,7 +17,13 @@ class App extends Component {
   
   //end of componentDidMount
 
-  // addLocation = (name) => {
+  addLocation = (name) => {
+    axios.post("/api/trips", { name, })
+      .then( res => {
+        const { todos, } = this.state;
+        this.setState({ todos: [...todos, res.data,] })
+      })
+  }
 
   // };//end of addLocation
 
@@ -28,7 +34,7 @@ class App extends Component {
   // deleteLocation = (id) => {
 
   // };//end of deleteLocation
-  
+
   toggleForm = () => this.setState({ 
     showForm: !this.state.showForm, 
   });
@@ -37,25 +43,21 @@ class App extends Component {
     const { showForm, } = this.state;
 
     return (
-      <Container>
-        <Header
-          as="h1"
-          style={{
-            margin: "23.5px",
-            color: "blue",
-            fontFamily: "monospace",
-            textAlign: "center"
-          }}
+      <Container >
+        <Header 
+         as = "h1"
+         color = "blue"
+         style = {{margin: "23.5px", fontFamily: "monospace", textAlign: "center"}}
         >
-          <Icon name="map" />
-          triptracker™
+        <Icon name = "map"/>
+          triptracker®
         </Header>
         <hr/>
         <Button circular onClick = {this.toggleForm}>
           <Icon name = { showForm ? "chevron down" : "chevron up" }/>
           add trip
         </Button>
-        { showForm ? <TripForm /> : null }
+        { showForm ? <TripForm add = {this.addTrip}/> : null }
         <Trip />
         <hr />
         <TripList trips={this.state.trips} />

@@ -5,12 +5,18 @@ const TripForm = () => (
   <Segment inverted>
   <Form inverted>
     <Form.Field>
-      <input placeholder='Location' />
+      <input placeholder='Trip Name' />
     </Form.Field>
-    <Form.Field>
-      <input placeholder='Street' />
-    </Form.Field>
-    <Form.Field>
+    <Form.Group inline>
+      <Form.Field>
+        <input placeholder='Start Date' />
+      </Form.Field>
+      <Form.Field>
+        <input placeholder='End Date' />
+      </Form.Field>
+    </Form.Group>
+    
+    {/* <Form.Field>
       <input placeholder='City' />
     </Form.Field>
     <Form.Field>
@@ -18,7 +24,7 @@ const TripForm = () => (
     </Form.Field>
     <Form.Field>
       <input placeholder='Zip' />
-    </Form.Field>
+    </Form.Field>  */}
     <Button type='submit'>Submit</Button>
   </Form>
   </Segment>
