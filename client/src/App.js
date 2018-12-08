@@ -23,6 +23,13 @@ class App extends Component {
     });
   };
 
+  addTrip = name => {
+    axios.post("/api/trips", { name }).then(res => {
+      const { trips } = this.state;
+      this.setState({ trips: [...trips, res.data] });
+    });
+  };
+
   // };//end of addLocation
 
   updateTrip = (id) => {
