@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import TripList from './components/TripList';
-import { Container, } from "semantic-ui-react";
+import { Container, Header, Icon } from "semantic-ui-react";
 
 
 class App extends Component {
@@ -28,11 +28,18 @@ class App extends Component {
 
   render() {
     return (
-      <>
-
-      </>
-    );//end of return
-  };//end of render
-};//end of Class App
+      <Container >
+        <Header 
+         as = "h1"
+         style = {{margin: "23.5px", color: "blue", fontFamily: "monospace", textAlign: "center"}}
+        >
+        <Icon name = "map"/>
+        triptracker™
+        </Header>
+        <hr/>
+      </Container>
+    );
+  }
+}
 
 export default App;
