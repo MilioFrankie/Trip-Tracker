@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import axios from "axios";
 import Trip from './components/Trip';
 import TripList from './components/TripList';
 import TripForm from './components/TripForm';
 import { Container, Header, Icon, Button} from "semantic-ui-react";
-
 
 class App extends Component {
   state = { trips: [], showForm: false, };
@@ -38,13 +37,18 @@ class App extends Component {
     const { showForm, } = this.state;
 
     return (
-      <Container >
-        <Header 
-         as = "h1"
-         style = {{margin: "23.5px", color: "blue", fontFamily: "monospace", textAlign: "center"}}
+      <Container>
+        <Header
+          as="h1"
+          style={{
+            margin: "23.5px",
+            color: "blue",
+            fontFamily: "monospace",
+            textAlign: "center"
+          }}
         >
-        <Icon name = "map"/>
-        triptracker™
+          <Icon name="map" />
+          triptracker™
         </Header>
         <hr/>
         <Button circular onClick = {this.toggleForm}>
@@ -53,6 +57,8 @@ class App extends Component {
         </Button>
         { showForm ? <TripForm /> : null }
         <Trip />
+        <hr />
+        <TripList trips={this.state.trips} />
       </Container>
     );
   }
