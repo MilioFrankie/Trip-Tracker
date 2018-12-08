@@ -33,9 +33,6 @@ class Api::TripsController < ApplicationController
     def set_trip
       @trip = Trip.find(params[:id])
     end
-<<<<<<< HEAD
-end
-=======
+
   end
 
->>>>>>> update add trip form

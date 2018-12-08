@@ -16,13 +16,12 @@ class App extends Component {
 
   //end of componentDidMount
 
-  addLocation = (name) => {
-    axios.post("/api/trips", { name, })
-      .then( res => {
-        const { todos, } = this.state;
-        this.setState({ todos: [...todos, res.data,] })
-      })
-  }
+  addLocation = name => {
+    axios.post("/api/trips", { name }).then(res => {
+      const { todos } = this.state;
+      this.setState({ todos: [...todos, res.data] });
+    });
+  };
 
   // };//end of addLocation
 
@@ -34,21 +33,26 @@ class App extends Component {
 
   // };//end of deleteLocation
 
-  toggleForm = () => this.setState({ 
-    showForm: !this.state.showForm, 
-  });
+  toggleForm = () =>
+    this.setState({
+      showForm: !this.state.showForm
+    });
 
   render() {
     const { showForm } = this.state;
 
     return (
-      <Container >
-        <Header 
-         as = "h1"
-         color = "blue"
-         style = {{margin: "23.5px", fontFamily: "monospace", textAlign: "center"}}
+      <Container>
+        <Header
+          as="h1"
+          color="blue"
+          style={{
+            margin: "23.5px",
+            fontFamily: "monospace",
+            textAlign: "center"
+          }}
         >
-        <Icon name = "map"/>
+          <Icon name="map" />
           triptracker®
         </Header>
         <hr />
@@ -56,9 +60,7 @@ class App extends Component {
           <Icon name={showForm ? "chevron down" : "chevron up"} />
           add trip
         </Button>
-        { showForm ? <TripForm add = {this.addTrip}/> : null }
-        <Trip />
-        {showForm ? <TripForm /> : null}
+        {showForm ? <TripForm add={this.addTrip} /> : null}
         <hr />
         <TripList trips={this.state.trips} />
       </Container>
